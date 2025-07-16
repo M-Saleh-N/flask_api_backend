@@ -13,6 +13,7 @@ def create_app():
 
     from app.resources.user import UserListResource, UserResource
     from app.resources.contact import ContactListResource, ContactResource
+    from app.resources.product import ProductListResource, ProductResource
 
 
     CORS(app)
@@ -26,6 +27,11 @@ def create_app():
     # contact resources
     api.add_resource(ContactListResource, '/v1/contacts')
     api.add_resource(ContactResource, '/v1/contacts/<int:user_id>')
+
+    # product resources
+    api.add_resource(ProductListResource, '/v1/products')
+    api.add_resource(ProductResource, '/v1/products/<int:product_id>')
+
 
     with app.app_context():
         db.create_all()
